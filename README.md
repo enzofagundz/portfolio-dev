@@ -32,6 +32,13 @@ gera `.output/server/wrangler.json` sozinho, apontando `assets.directory` para o
 - Páginas são **prerenderizadas no build** (`nitro.prerender`), então o HTML sai pronto
   e o contato do `.env` fica embutido — não é preciso configurar variáveis no runtime do
   Worker. Mudou o `.env`? Rode o build de novo.
+- **As variáveis de runtime do Worker (dashboard → Settings → Variables) não afetam o
+  site**: elas só existem durante a execução do Worker, e o contato já está gravado no
+  HTML. Se o deploy é feito por Git/Workers Builds, cadastre
+  `NUXT_PUBLIC_WHATSAPP_NUMBER` e `NUXT_PUBLIC_CONTACT_EMAIL` nas **variáveis de build**
+  (Settings → Build → Variables and secrets) e dispare um novo build.
+- Sem essas variáveis no momento do build, o build **falha** com a mensagem
+  `Contato não configurado: defina ...` — o site nunca vai ao ar sem os CTAs de contato.
 - `not_found_handling: 404-page` + `public/404.html`: navegação para URL inexistente
   recebe a página 404 com status **404** (o Worker nem é executado nesse caso).
 - Nitro gera `.output/public/_headers` com cache imutável para `/_nuxt/*`.
