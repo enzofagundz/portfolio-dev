@@ -13,6 +13,23 @@ export default defineNuxtConfig({
       contactEmail: '',
     },
   },
+  nitro: {
+    preset: 'cloudflare_module',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+      wrangler: {
+        name: 'enzo-fagundes-portfolio',
+        assets: {
+          not_found_handling: '404-page',
+        },
+      },
+    },
+  },
   app: {
     head: {
       htmlAttrs: { lang: 'pt-BR' },
