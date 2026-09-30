@@ -16,15 +16,23 @@ interface ExperienceItem {
   period: string
 }
 
-const whatsappNumber = '55DDDNUMERO'
+interface EducationItem {
+  degree: string
+  institution: string
+  period: string
+}
+
+interface ResultItem {
+  title: string
+  text: string
+}
 
 export const site = {
   name: 'Enzo Fagundes',
   tagline: 'Desenvolvimento web para profissionais e negócios.',
-  email: 'enzofagundz@gmail.com',
-  whatsappNumber,
   whatsappMessage: 'Olá, Enzo! Vi seu portfólio e gostaria de conversar sobre uma landing page.',
   location: 'Lins, SP',
+  linkedin: 'https://www.linkedin.com/in/enzofagundz',
   url: '',
 }
 
@@ -50,6 +58,7 @@ export const offer = {
       summary: 'Página única, responsiva, publicada e pronta para ser divulgada.',
     },
   ] satisfies Plan[],
+  note: 'Também desenvolvo outras páginas e faço ajustes em sites que já estão no ar. Se for o seu caso, conversamos sobre o escopo.',
 }
 
 export const about = {
@@ -63,15 +72,32 @@ export const about = {
   ],
   experience: [
     { role: 'Analista de Desenvolvimento', company: 'Sonnitech', period: '2024 — atual' },
+    { role: 'Estagiário de Desenvolvimento', company: 'Sonnitech', period: '2023 — 2024' },
   ] satisfies ExperienceItem[],
-  education: {
-    degree: 'Sistemas para Internet',
-    institution: 'FATEC Lins',
-    period: '2021 — 2024',
-  },
+  experienceNote:
+    'No dia a dia, trabalho com Laravel, Vue.js, MySQL, Redis e Docker, em sistemas web para os setores público e privado.',
+  results: [
+    {
+      title: 'Rastreamento geográfico',
+      text: 'Substituí uma API externa instável por um servidor de roteamento próprio, com testes de carga, resolvendo falhas críticas de sinal no rastreamento dos veículos.',
+    },
+    {
+      title: 'Relatórios financeiros',
+      text: 'Refatorei o motor de relatórios com consultas otimizadas, cache e processamento em segundo plano. O tempo de geração de relatórios complexos caiu mais de 70%.',
+    },
+    {
+      title: 'Modernização de sistema legado',
+      text: 'Participei da migração de partes de um sistema legado e da padronização do ambiente de desenvolvimento, o que reduziu o tempo de entrada de novos desenvolvedores no projeto.',
+    },
+    {
+      title: 'Painéis e integrações',
+      text: 'Desenvolvi painéis com filtros e exportação em PDF e Excel, além de integrações com APIs de terceiros.',
+    },
+  ] satisfies ResultItem[],
+  resultsTitle: 'Resultados',
+  resultsLead: 'Alguns problemas que já resolvi em sistemas em produção.',
+  education: [
+    { degree: 'Sistemas para Internet', institution: 'FATEC Lins', period: '2021 — 2024' },
+    { degree: 'Técnico em Administração', institution: 'ETEC Lins', period: '2019 — 2020' },
+  ] satisfies EducationItem[],
 }
-
-export const whatsappHref = () =>
-  `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(site.whatsappMessage)}`
-
-export const mailtoHref = () => `mailto:${site.email}`
