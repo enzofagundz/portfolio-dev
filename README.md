@@ -12,11 +12,33 @@ Sem backend, sem API própria, sem bibliotecas de UI.
 
 ```bash
 npm install
-cp .env.example .env   # preencha WhatsApp e e-mail
-npm run dev            # http://localhost:3000
-npm run generate       # gera .output/public, pronto para qualquer hospedagem estática
-npm run preview        # serve o build de produção
+cp .env.example .env    # preencha WhatsApp e e-mail
+npm run dev             # http://localhost:3000
+npm run build           # build para Cloudflare Workers (.output/server + .output/public)
+npm run cf:preview      # preview local do Worker (wrangler dev, precisa do build)
+npm run cf:deploy       # build + deploy no Cloudflare (wrangler deploy)
+npm run generate        # saída puramente estática (.output/public) para hospedagem simples
+npm run preview         # serve o build de produção do Nuxt
 ```
+
+## Deploy no Cloudflare
+
+Preset configurado em `nuxt.config.ts`: **`cloudflare_module`** (Workers com static
+assets, o preset recomendado pelo Nitro) com `cloudflare.deployConfig` ligado — o Nitro
+gera `.output/server/wrangler.json` sozinho, apontando `assets.directory` para o build.
+
+- `npm run cf:deploy` → builda e publica. O nome do Worker está fixado em
+  `enzo-fagundes-portfolio` (ajuste em `nuxt.config.ts` se quiser outro).
+- Páginas são **prerenderizadas no build** (`nitro.prerender`), então o HTML sai pronto
+  e o contato do `.env` fica embutido — não é preciso configurar variáveis no runtime do
+  Worker. Mudou o `.env`? Rode o build de novo.
+- `not_found_handling: 404-page` + `public/404.html`: navegação para URL inexistente
+  recebe a página 404 com status **404** (o Worker nem é executado nesse caso).
+- Nitro gera `.output/public/_headers` com cache imutável para `/_nuxt/*`.
+- Preview fiel ao deploy: `npm run cf:preview` (roda o Worker real via `wrangler dev`).
+
+Alternativa sem Worker (Cloudflare Pages, Netlify, S3, nginx): `npm run generate` e
+publique `.output/public` — o `404.html` na raiz também vale para essas hospedagens.
 
 ## Contato (`.env`)
 
@@ -29,7 +51,7 @@ tempo de build:
 | `NUXT_PUBLIC_CONTACT_EMAIL` | Botão “Enviar e-mail” e linha de contato |
 
 Sem valor definido, o botão correspondente não é renderizado — nada de link quebrado.
-Como os valores entram no HTML gerado, **mudou o `.env`, rode `npm run generate` de novo**
+Como os valores entram no HTML gerado, **mudou o `.env`, rode o build de novo**
 (e configure as mesmas variáveis no ambiente de build da hospedagem).
 
 ## Onde editar o conteúdo
