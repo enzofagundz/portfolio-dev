@@ -8,7 +8,7 @@ defineProps<{ project: Project; reverse?: boolean }>()
   <article class="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
     <div class="lg:col-span-5" :class="reverse ? 'lg:order-2' : undefined">
       <p class="text-caption font-medium uppercase tracking-[0.18em] text-mist">
-        {{ project.category }}<template v-if="project.location"> · {{ project.location }}</template>
+        {{ project.context }} · {{ project.category }}<template v-if="project.location"> · {{ project.location }}</template>
       </p>
       <h3 class="mt-3 text-heading font-bold text-navy">{{ project.title }}</h3>
       <p class="mt-4 text-body text-muted">{{ project.description }}</p>

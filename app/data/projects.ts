@@ -8,6 +8,7 @@ export interface ProjectImage {
 export interface Project {
   slug: string
   title: string
+  context: string
   category: string
   location?: string
   description: string
@@ -19,10 +20,19 @@ export interface Project {
   url?: string
 }
 
+export interface OtherWork {
+  title: string
+  context: string
+  description: string
+  url?: string
+  urlLabel?: string
+}
+
 export const projects: Project[] = [
   {
     slug: 'lucas-alcantara',
     title: 'Lucas Alcantara',
+    context: 'Landing page',
     category: 'Psicologia',
     location: 'Lins, SP',
     description:
@@ -52,6 +62,7 @@ export const projects: Project[] = [
   {
     slug: 'oligoflora-lins',
     title: 'OligoFlora Lins',
+    context: 'Landing page',
     category: 'Estética',
     location: 'Lins, SP',
     description:
@@ -77,5 +88,22 @@ export const projects: Project[] = [
       height: 7186,
       alt: 'Página da clínica OligoFlora Lins vista no celular.',
     },
+  },
+]
+
+export const otherWork: OtherWork[] = [
+  {
+    title: 'Cidade Fácil',
+    context: 'Sonnitech · produto',
+    description:
+      'Software da Sonnitech usado por prefeituras para reduzir burocracia e dar mais eficiência a processos do dia a dia. Os módulos principais estão operacionais desde 2019 e o sistema é usado por várias cidades paulistas. Faço parte do time que desenvolve o produto.',
+    url: 'https://sonnitech.com.br/',
+    urlLabel: 'Página da Sonnitech',
+  },
+  {
+    title: 'Refatoração de front-end',
+    context: 'Freelance · escopo fechado',
+    description:
+      'Migração da interface de um sistema web existente para uma stack mais simples de manter, com entregas semanais ao longo de um mês. O tempo estimado de manutenção do front-end caiu cerca de 40%.',
   },
 ]
