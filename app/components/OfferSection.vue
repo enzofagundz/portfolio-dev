@@ -19,6 +19,8 @@ import { offer } from '~/data/site'
         </li>
       </ul>
 
+      <p v-if="offer.note" class="mt-8 max-w-xl text-body-sm text-mist">{{ offer.note }}</p>
+
       <div class="mt-10">
         <AppButton href="#contato">Conversar sobre meu projeto</AppButton>
       </div>
