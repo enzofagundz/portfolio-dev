@@ -1,0 +1,14 @@
+# Nuxt
+.nuxt
+.output
+.data
+dist
+node_modules
+.env
+
+# Local scratch
+tmp-shots
+
+# Editors and OS
+.DS_Store
+*.log
