@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { footerLinks, mailtoHref, site, whatsappHref } from '~/data/site'
+import { footerLinks, site } from '~/data/site'
+
+const { hasWhatsapp, hasEmail, whatsappHref, mailtoHref } = useContact()
 
 const year = new Date().getFullYear()
 </script>
@@ -28,9 +30,9 @@ const year = new Date().getFullYear()
 
         <div class="md:col-span-4">
           <ul class="space-y-1">
-            <li>
+            <li v-if="hasWhatsapp">
               <a
-                :href="whatsappHref()"
+                :href="whatsappHref"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex min-h-11 items-center gap-2 text-body-sm text-muted transition-colors duration-150 ease-soft hover:text-navy"
@@ -39,9 +41,9 @@ const year = new Date().getFullYear()
                 <AppIcon name="arrow-up-right" class="h-4 w-4" :stroke-width="1.5" />
               </a>
             </li>
-            <li>
+            <li v-if="hasEmail">
               <a
-                :href="mailtoHref()"
+                :href="mailtoHref"
                 class="flex min-h-11 items-center gap-2 text-body-sm text-muted transition-colors duration-150 ease-soft hover:text-navy"
               >
                 E-mail

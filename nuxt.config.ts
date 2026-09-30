@@ -7,6 +7,12 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  runtimeConfig: {
+    public: {
+      whatsappNumber: '',
+      contactEmail: '',
+    },
+  },
   app: {
     head: {
       htmlAttrs: { lang: 'pt-BR' },

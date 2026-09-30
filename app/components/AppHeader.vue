@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { nav, whatsappHref } from '~/data/site'
+import { nav } from '~/data/site'
 
 const open = ref(false)
+const { contactHref, contactExternal } = useContact()
 </script>
 
 <template>
@@ -27,7 +28,7 @@ const open = ref(false)
 
       <div class="flex items-center gap-2">
         <span class="hidden sm:block">
-          <AppButton :href="whatsappHref()" external>Vamos conversar</AppButton>
+          <AppButton :href="contactHref" :external="contactExternal">Vamos conversar</AppButton>
         </span>
 
         <button
@@ -92,7 +93,7 @@ const open = ref(false)
             </a>
           </li>
           <li class="pt-3 pb-2 sm:hidden">
-            <AppButton :href="whatsappHref()" external class="w-full">Vamos conversar</AppButton>
+            <AppButton :href="contactHref" :external="contactExternal" class="w-full">Vamos conversar</AppButton>
           </li>
         </ul>
       </nav>

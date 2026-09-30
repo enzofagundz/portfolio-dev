@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { mailtoHref, site, whatsappHref } from '~/data/site'
+import { site } from '~/data/site'
+
+const { hasWhatsapp, hasEmail, whatsappHref, mailtoHref, email } = useContact()
 </script>
 
 <template>
@@ -12,17 +14,17 @@ import { mailtoHref, site, whatsappHref } from '~/data/site'
       />
 
       <div class="mt-10 flex flex-wrap gap-3 md:mt-12">
-        <AppButton :href="whatsappHref()" external>
+        <AppButton v-if="hasWhatsapp" :href="whatsappHref" external>
           Falar pelo WhatsApp
           <AppIcon name="arrow-up-right" class="h-4 w-4" :stroke-width="1.75" />
         </AppButton>
-        <AppButton :href="mailtoHref()" variant="secondary">
+        <AppButton v-if="hasEmail" :href="mailtoHref" variant="secondary">
           <AppIcon name="mail" class="h-4 w-4" :stroke-width="1.75" />
           Enviar e-mail
         </AppButton>
       </div>
 
-      <p class="mt-6 text-body-sm text-mist">{{ site.email }} · {{ site.location }}</p>
+      <p v-if="email" class="mt-6 text-body-sm text-mist">{{ email }} · {{ site.location }}</p>
     </div>
   </section>
 </template>
