@@ -26,6 +26,8 @@ export default defineNuxtConfig({
       nodeCompat: true,
       wrangler: {
         name: 'enzo-fagundes-portfolio',
+        workers_dev: true,
+        routes: [{ pattern: 'enzofagundz.com.br', custom_domain: true }],
         assets: {
           not_found_handling: '404-page',
         },
