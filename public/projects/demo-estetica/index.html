@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Lumina Estética | Estética Funcional e Avançada em Lins, SP</title>
+  <meta name="description" content="Clínica de estética funcional e avançada em Lins, SP. Depilação a laser, preenchimento labial, Criolipólise e mais. Agende sua avaliação pelo WhatsApp.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F7F3EA">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Lumina Estética | Estética Funcional e Avançada">
+  <meta property="og:description" content="Tratamentos faciais e corporais em Lins, SP, com avaliação antes de começar. Agende sua avaliação pelo WhatsApp.">
+  <meta property="og:image" content="assets/retrato.jpg">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:  '#1E4D3B',
+            deep:   '#143327',
+            sage:   '#7FA98F',
+            cream:  '#F7F3EA',
+            light:  '#FBF9F4',
+            line:   '#E6DFD0',
+            muted:  '#5B6B63',
+            wa:     '#25D366'
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+  <style>
+    [x-cloak] { display: none !important; }
+    ::selection { background: #7FA98F; color: #143327; }
+  </style>
+
+  <!-- SEO local -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Lumina Estética",
+    "description": "Clínica de estética funcional e avançada em Lins, SP.",
+    "telephone": "+5514999999999",
+    "image": "assets/retrato.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. das Acácias, 320",
+      "addressLocality": "Lins",
+      "addressRegion": "SP",
+        "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "10:00",
+      "closes": "20:00"
+    }],
+    "sameAs": ["https://www.instagram.com/luminaestetica/"]
+  }
+  </script>
+</head>
+
+<body class="bg-cream font-sans text-deep antialiased">
+
+  <!-- ============================================================
+       PROJETO DE DEMONSTRAÇÃO (portfólio).
+       Nome, endereço, telefone, redes e fotos são fictícios. O número
+       de WhatsApp é um placeholder e não atende ninguém.
+       ============================================================ -->
+  <header class="sticky top-0 z-40 border-b border-line bg-cream/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+      <a href="#" class="leading-tight">
+        <span class="font-display text-xl text-deep">Lumina</span>
+        <span class="block text-[11px] tracking-wide text-muted">Estética Funcional e Avançada · Lins, SP</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 text-sm text-muted md:flex">
+        <a href="#sobre" class="transition hover:text-brand">Sobre</a>
+        <a href="#servicos" class="transition hover:text-brand">Serviços</a>
+        <a href="#como-funciona" class="transition hover:text-brand">Como funciona</a>
+        <a href="#faq" class="transition hover:text-brand">Dúvidas</a>
+      </nav>
+
+      <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+         target="_blank" rel="noopener"
+         class="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-medium text-light transition hover:bg-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <span class="hidden sm:inline">Agendar</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-2 md:py-20">
+      <div>
+        <h1 class="font-display text-[32px] leading-tight text-deep md:text-[52px]">
+          Estética facial e corporal em Lins, com avaliação antes de cada tratamento
+        </h1>
+        <p class="mt-5 max-w-xl text-[17px] leading-relaxed text-muted">
+          Depilação a laser, preenchimento labial, Criolipólise e outros tratamentos na
+          Lumina, clínica de estética funcional e avançada.
+        </p>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+           target="_blank" rel="noopener"
+           class="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand px-6 text-base font-semibold text-light transition hover:bg-deep active:scale-[.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage sm:w-auto">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Agendar minha avaliação
+        </a>
+
+        <div class="mt-6 flex flex-col gap-2 text-sm text-muted sm:flex-row sm:items-center sm:gap-6">
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            R. das Acácias, 320, Centro, Lins, SP
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <svg class="h-4 w-4 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Seg a sex, 10h às 20h
+          </span>
+        </div>
+      </div>
+
+      <img src="assets/retrato.jpg" alt="Camila Prates na Lumina Estética, em Lins"
+           width="1086" height="1448" fetchpriority="high"
+           class="aspect-[4/5] w-full rounded-2xl object-cover md:order-last">
+    </section>
+
+    <!-- ============================================================
+         SOBRE
+         ============================================================ -->
+    <section id="sobre" class="border-y border-line bg-light">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-2 md:py-20">
+        <img src="assets/procedimento.jpg" alt="Procedimento facial realizado na Lumina Estética"
+             width="1080" height="1440" loading="lazy"
+             class="aspect-[4/5] w-full rounded-2xl object-cover">
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-sage">Sobre a clínica</p>
+          <h2 class="mt-3 font-display text-3xl text-deep md:text-4xl">Cuidado que começa com avaliação</h2>
+          <p class="mt-5 text-[17px] leading-relaxed text-muted">
+            A Lumina é uma clínica de estética funcional e avançada em Lins, SP. Antes de
+            indicar qualquer tratamento, fazemos uma avaliação para entender o que a sua pele
+            e o seu corpo pedem. Só então montamos o plano.
+          </p>
+          <p class="mt-4 text-[17px] leading-relaxed text-muted">
+            Você acompanha a evolução a cada sessão, e a gente ajusta o que for preciso.
+            À frente da clínica está Camila Prates.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVIÇOS
+         ============================================================ -->
+    <section id="servicos" class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-wide text-sage">Serviços</p>
+      <h2 class="mt-3 font-display text-3xl text-deep md:text-4xl">O que tratamos</h2>
+      <p class="mt-4 max-w-2xl text-[17px] leading-relaxed text-muted">
+        Toque em um serviço para falar com a gente e saber mais.
+      </p>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Serviço: para editar, mude o título, o texto e o parâmetro text= do link -->
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Depila%C3%A7%C3%A3o%20a%20Laser."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Depilação a laser</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Reduz os pelos aos poucos, com segurança em diferentes áreas do corpo.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Preenchimento%20Labial."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Preenchimento labial</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Define o contorno e dá volume na medida, com resultado natural.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Tratamentos%20a%20Laser."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Tratamentos a laser</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Para manchas, textura e outras necessidades da pele.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Criolip%C3%B3lise."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Criolipólise</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Reduz gordura localizada em áreas específicas, sessão a sessão.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Microfocado."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Microfocado</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Estimula colágeno e firmeza na pele do rosto.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Lipo%20Natural."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Lipo natural</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Tratamento corporal para gordura localizada, indicado após a avaliação.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Remo%C3%A7%C3%A3o%20de%20Tatuagem."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Remoção de tatuagem</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Clareia e remove tatuagens, com cuidado a cada sessão.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20Est%C3%A9tica%20Facial%20e%20Corporal."
+           target="_blank" rel="noopener"
+           class="group rounded-2xl border border-line bg-light p-6 transition hover:border-sage">
+          <h3 class="font-display text-xl text-deep">Estética facial e corporal</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-muted">Protocolos de limpeza, hidratação e cuidado conforme a sua necessidade.</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-brand group-hover:text-deep">Quero saber mais</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DIFERENCIAIS
+         ============================================================ -->
+    <section id="diferenciais" class="border-y border-line bg-light">
+      <div class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+        <p class="text-sm font-semibold uppercase tracking-wide text-sage">Por que a Lumina Estética</p>
+        <h2 class="mt-3 font-display text-3xl text-deep md:text-4xl">O que muda no nosso atendimento</h2>
+
+        <div class="mt-10 grid gap-8 sm:grid-cols-2">
+          <div class="flex gap-4">
+            <svg class="h-6 w-6 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
+            <div>
+              <h3 class="font-semibold text-deep">Avaliação antes de tratar</h3>
+              <p class="mt-1 text-[15px] leading-relaxed text-muted">O plano é feito para o seu caso, não um pacote pronto.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <svg class="h-6 w-6 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <div>
+              <h3 class="font-semibold text-deep">Equipamentos atuais e técnicas seguras</h3>
+              <p class="mt-1 text-[15px] leading-relaxed text-muted">Trabalhamos com o que há de atual em estética funcional.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <svg class="h-6 w-6 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <div>
+              <h3 class="font-semibold text-deep">Acompanhamento durante o tratamento</h3>
+              <p class="mt-1 text-[15px] leading-relaxed text-muted">A gente acompanha você durante o tratamento, não só na sessão.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <svg class="h-6 w-6 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <h3 class="font-semibold text-deep">Horário amplo</h3>
+              <p class="mt-1 text-[15px] leading-relaxed text-muted">Atendimento das 10h às 20h, de segunda a sexta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         COMO FUNCIONA
+         ============================================================ -->
+    <section id="como-funciona" class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-wide text-sage">Como funciona</p>
+      <h2 class="mt-3 font-display text-3xl text-deep md:text-4xl">Do primeiro contato à sua avaliação</h2>
+
+      <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <li>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-display text-lg text-light">1</span>
+          <h3 class="mt-4 font-semibold text-deep">Chame no WhatsApp</h3>
+          <p class="mt-1 text-[15px] leading-relaxed text-muted">Conte o que você quer tratar. A gente responde e orienta.</p>
+        </li>
+        <li>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-display text-lg text-light">2</span>
+          <h3 class="mt-4 font-semibold text-deep">Avaliação na clínica</h3>
+          <p class="mt-1 text-[15px] leading-relaxed text-muted">Entendemos o seu caso e montamos um plano personalizado.</p>
+        </li>
+        <li>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-display text-lg text-light">3</span>
+          <h3 class="mt-4 font-semibold text-deep">Sessões no seu ritmo</h3>
+          <p class="mt-1 text-[15px] leading-relaxed text-muted">Os atendimentos são combinados com a sua rotina.</p>
+        </li>
+        <li>
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-display text-lg text-light">4</span>
+          <h3 class="mt-4 font-semibold text-deep">Acompanhamento</h3>
+          <p class="mt-1 text-[15px] leading-relaxed text-muted">Acompanhamos os resultados e ajustamos o plano quando preciso.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================================================
+         FAQ (acordeão com Alpine.js)
+         ============================================================ -->
+    <section id="faq" class="border-y border-line bg-light">
+      <div class="mx-auto max-w-3xl px-5 py-14 md:py-20">
+        <p class="text-sm font-semibold uppercase tracking-wide text-sage">Dúvidas frequentes</p>
+        <h2 class="mt-3 font-display text-3xl text-deep md:text-4xl">Perguntas que a gente mais recebe</h2>
+
+        <div x-data="{ open: null }" class="mt-8 divide-y divide-line border-y border-line">
+
+          <div>
+            <button @click="open = open === 1 ? null : 1" :aria-expanded="open === 1"
+                    class="flex min-h-[56px] w-full items-center justify-between gap-4 py-4 text-left font-semibold text-deep">
+              Dói?
+              <svg class="h-5 w-5 shrink-0 text-sage transition-transform" :class="open === 1 && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <p x-show="open === 1" x-cloak class="pb-5 text-[15px] leading-relaxed text-muted">
+              Depende do tratamento. Na maioria, o desconforto é leve. Explicamos o que você vai sentir na avaliação.
+            </p>
+          </div>
+
+          <div>
+            <button @click="open = open === 2 ? null : 2" :aria-expanded="open === 2"
+                    class="flex min-h-[56px] w-full items-center justify-between gap-4 py-4 text-left font-semibold text-deep">
+              Quantas sessões vou precisar?
+              <svg class="h-5 w-5 shrink-0 text-sage transition-transform" :class="open === 2 && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <p x-show="open === 2" x-cloak class="pb-5 text-[15px] leading-relaxed text-muted">
+              Varia de pessoa para pessoa. A estimativa sai depois da avaliação, quando entendemos o seu caso.
+            </p>
+          </div>
+
+          <div>
+            <button @click="open = open === 3 ? null : 3" :aria-expanded="open === 3"
+                    class="flex min-h-[56px] w-full items-center justify-between gap-4 py-4 text-left font-semibold text-deep">
+              Preciso agendar?
+              <svg class="h-5 w-5 shrink-0 text-sage transition-transform" :class="open === 3 && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <p x-show="open === 3" x-cloak class="pb-5 text-[15px] leading-relaxed text-muted">
+              Sim. Chame no WhatsApp e a gente combina o melhor horário para você.
+            </p>
+          </div>
+
+          <div>
+            <button @click="open = open === 4 ? null : 4" :aria-expanded="open === 4"
+                    class="flex min-h-[56px] w-full items-center justify-between gap-4 py-4 text-left font-semibold text-deep">
+              Onde vocês ficam e qual o horário?
+              <svg class="h-5 w-5 shrink-0 text-sage transition-transform" :class="open === 4 && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <p x-show="open === 4" x-cloak class="pb-5 text-[15px] leading-relaxed text-muted">
+              R. das Acácias, 320, Centro, Lins, SP.
+              Atendemos de segunda a sexta, das 10h às 20h. Sábados e domingos ficamos fechados.
+            </p>
+          </div>
+
+        </div>
+
+        <p class="mt-8 text-[15px] text-muted">
+          Ficou com dúvida?
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20uma%20d%C3%BAvida."
+             target="_blank" rel="noopener" class="font-semibold text-brand underline decoration-sage underline-offset-4 hover:text-deep">
+            Chama a gente no WhatsApp.
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA FINAL
+         ============================================================ -->
+    <section id="contato" class="bg-deep">
+      <div class="mx-auto max-w-3xl px-5 py-16 text-center md:py-24">
+        <h2 class="font-display text-3xl text-cream md:text-4xl">Agende sua avaliação na Lumina Estética</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-sage">
+          Atendemos de segunda a sexta, das 10h às 20h, em Lins, SP.
+        </p>
+
+        <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+           target="_blank" rel="noopener"
+           class="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-cream px-8 text-base font-semibold text-deep transition hover:bg-light active:scale-[.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage sm:w-auto">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Agendar avaliação pelo WhatsApp
+        </a>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 text-sm text-sage sm:flex-row sm:gap-6">
+          <span>R. das Acácias, 320, Centro, Lins, SP</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=R.%20das%20Ac%C3%A1cias%2C%20320%2C%20Lins%20-%20SP"
+             target="_blank" rel="noopener"
+             class="inline-flex min-h-[44px] items-center gap-2 font-semibold text-cream underline decoration-sage underline-offset-4 hover:text-light">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            Como chegar
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       RODAPÉ
+       ============================================================ -->
+  <footer class="bg-cream">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-muted sm:flex-row">
+      <p>© 2026 Lumina · Estética Funcional e Avançada</p>
+      <div class="flex items-center gap-5">
+        <a href="https://www.instagram.com/luminaestetica/" target="_blank" rel="noopener"
+           class="inline-flex min-h-[44px] items-center gap-2 transition hover:text-brand">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          @luminaestetica
+        </a>
+        <a href="https://wa.me/5514999999999" target="_blank" rel="noopener" class="inline-flex min-h-[44px] items-center transition hover:text-brand">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BOTÃO FLUTUANTE DE WHATSAPP
+       ============================================================ -->
+  <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+     target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
+     class="fixed right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-wa text-white shadow-lg transition hover:scale-105 active:scale-95"
+     style="bottom: calc(1rem + env(safe-area-inset-bottom));">
+    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+</body>
+</html>

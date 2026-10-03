@@ -1,7 +1,82 @@
 <script setup lang="ts">
 import type { Project } from '~/data/projects'
 
-defineProps<{ project: Project; reverse?: boolean }>()
+const props = defineProps<{ project: Project; reverse?: boolean }>()
+
+const frame = ref<HTMLIFrameElement | null>(null)
+const previewSrc = computed(() => `/projects/${props.project.slug}/`)
+
+let frameWindow: Window | null = null
+let paused = false
+let reducedMotion = false
+let raf = 0
+
+function schedule() {
+  if (!raf) raf = requestAnimationFrame(update)
+}
+
+// Percorre a página do projeto conforme o card atravessa a viewport.
+function update() {
+  raf = 0
+  const el = frame.value
+  const win = frameWindow
+  if (!el || !win || reducedMotion) return
+
+  const rect = el.getBoundingClientRect()
+  const viewport = window.innerHeight
+
+  if (rect.bottom < 0 || rect.top > viewport) {
+    if (paused) {
+      paused = false
+      listenForInteraction()
+    }
+    return
+  }
+
+  if (paused) return
+
+  const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (rect.height + viewport)))
+  const max = Math.max(0, win.document.documentElement.scrollHeight - win.innerHeight)
+  win.scrollTo(0, progress * max)
+}
+
+function pause() {
+  paused = true
+}
+
+// Ao primeiro toque, clique ou rolagem dentro do preview, o visitante assume o controle.
+function listenForInteraction() {
+  const win = frameWindow
+  if (!win) return
+  win.removeEventListener('pointerdown', pause)
+  win.removeEventListener('wheel', pause)
+  win.removeEventListener('touchstart', pause)
+  win.addEventListener('pointerdown', pause, { once: true, passive: true })
+  win.addEventListener('wheel', pause, { once: true, passive: true })
+  win.addEventListener('touchstart', pause, { once: true, passive: true })
+}
+
+function onLoad() {
+  const win = frame.value?.contentWindow
+  if (!win) return
+  frameWindow = win
+  // O demo usa rolagem suave; o percurso acompanha o scroll da página e precisa ser instantâneo.
+  win.document.documentElement.style.scrollBehavior = 'auto'
+  listenForInteraction()
+  schedule()
+}
+
+onMounted(() => {
+  reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  window.addEventListener('scroll', schedule, { passive: true })
+  window.addEventListener('resize', schedule, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', schedule)
+  window.removeEventListener('resize', schedule)
+  if (raf) cancelAnimationFrame(raf)
+})
 </script>
 
 <template>
@@ -25,7 +100,7 @@ defineProps<{ project: Project; reverse?: boolean }>()
       </dl>
 
       <p v-if="project.url" class="mt-7 flex flex-wrap gap-3">
-        <AppButton :href="project.url" variant="secondary">
+        <AppButton :href="project.url" variant="secondary" :external="true">
           Ver projeto
           <AppIcon name="arrow-up-right" class="h-4 w-4" :stroke-width="1.75" />
         </AppButton>
@@ -34,20 +109,19 @@ defineProps<{ project: Project; reverse?: boolean }>()
 
     <figure class="lg:col-span-7" :class="reverse ? 'lg:order-1' : undefined">
       <div
-        class="group relative aspect-4/3 overflow-hidden rounded-card border border-line bg-cloud shadow-card"
+        class="relative aspect-[3/4] overflow-hidden rounded-card border border-line bg-cloud shadow-card sm:aspect-4/3"
       >
-        <img
-          :src="project.full.src"
-          :width="project.full.width"
-          :height="project.full.height"
-          :alt="project.full.alt"
+        <iframe
+          ref="frame"
+          :src="previewSrc"
+          :title="`Prévia da página de ${project.title}`"
           loading="lazy"
-          decoding="async"
-          class="h-full w-full object-cover object-top outline outline-1 -outline-offset-1 outline-black/10 transition-[object-position] duration-500 ease-soft group-hover:duration-[7000ms] group-hover:ease-linear group-hover:object-bottom"
+          class="absolute inset-0 h-full w-full border-0"
+          @load="onLoad"
         />
       </div>
       <figcaption class="mt-3 text-caption text-mist">
-        Página completa.<span class="hidden pointer-fine:inline"> Passe o cursor para percorrer.</span>
+        Role para percorrer a página.
       </figcaption>
     </figure>
   </article>

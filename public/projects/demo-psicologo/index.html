@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ============================================================
+       PROJETO DE DEMONSTRAÇÃO (portfólio).
+       Nome, CRP, clínica, endereço e fotos são fictícios. O número de
+       WhatsApp é um placeholder e não atende ninguém.
+       ============================================================ -->
+
+  <title>Rafael Bittencourt | Psicólogo Clínico em Lins, SP</title>
+  <meta name="description" content="Psicoterapia para adolescentes e adultos em Lins, SP. Atendimento presencial na Clínica Horizonte e online. Agende sua conversa pelo WhatsApp.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F5EFE7">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Rafael Bittencourt | Psicólogo Clínico em Lins, SP">
+  <meta property="og:description" content="Psicoterapia para adolescentes e adultos, com escuta profissional e sigilosa. Presencial em Lins e online.">
+  <!-- Demo de portfólio: sem domínio definido, og:image e o "image" do JSON-LD ficam relativos. -->
+  <meta property="og:image" content="assets/retrato.jpg">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand:      '#F5EFE7',
+            paper:     '#FBF8F3',
+            ink:       '#201D1A',
+            brown:     '#6B4C35',
+            brownDeep: '#4A3428',
+            caramel:   '#B98053',
+            line:      '#E3D9CC',
+            muted:     '#6E6259',
+            wa:        '#25D366'
+          },
+          fontFamily: {
+            serif: ['Instrument Serif', 'Georgia', 'serif'],
+            sans: ['Karla', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+  <style>
+    [x-cloak] { display: none !important; }
+    /* Escala de display em CSS: a hierarquia não depende do CDN do Tailwind */
+    .display-xl { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.06; }
+    .display-lg { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.15; }
+    .display-md { font-size: clamp(1.25rem, 1.6vw, 1.5rem); line-height: 1.3; }
+
+    /* Piso de leitura caso o CDN do Tailwind não carregue */
+    body { background: #F5EFE7; color: #201D1A; font-family: 'Karla', system-ui, sans-serif; }
+
+    /* Superfícies do navegador vindas da paleta */
+    ::selection { background: #B98053; color: #201D1A; }
+    html { scrollbar-color: #C8A98B #F5EFE7; }
+    body { caret-color: #6B4C35; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #F5EFE7; }
+    ::-webkit-scrollbar-thumb { background: #C8A98B; border: 3px solid #F5EFE7; border-radius: 999px; }
+    :focus-visible { outline: 2px solid #B98053; outline-offset: 2px; }
+
+    /* Um único momento de movimento: a régua do hero cresce e o texto sobe */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes ruleGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+      .rule-grow { transform-origin: left; animation: ruleGrow .9s cubic-bezier(.16, 1, .3, 1) both; }
+      .rise { animation: rise .7s cubic-bezier(.16, 1, .3, 1) both; }
+      .rise-2 { animation-delay: .09s; }
+      .rise-3 { animation-delay: .18s; }
+      .rise-4 { animation-delay: .27s; }
+    }
+  </style>
+
+  <noscript><style>[x-cloak] { display: block !important; }</style></noscript>
+  <!-- SEO local -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Rafael Bittencourt - Psicólogo Clínico",
+    "description": "Atendimento psicológico para adolescentes e adultos em Lins, SP.",
+    "telephone": "+5514999999999",
+    "image": "assets/retrato.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lins",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
+</head>
+
+<body id="topo" class="bg-sand font-sans text-ink antialiased">
+
+  <!-- ============================================================
+       MASTHEAD
+       ============================================================ -->
+  <header class="sticky top-0 z-40 border-b border-line bg-sand/95 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
+      <a href="#topo" class="flex min-w-0 items-center gap-3">
+        <img src="assets/logo.svg" alt="Logo Rafael Bittencourt, psicólogo" width="44" height="44"
+             class="h-11 w-11 rounded-full border border-line bg-paper object-cover">
+        <span class="min-w-0 leading-tight">
+          <span class="block truncate display-md font-serif text-ink">Rafael Bittencourt</span>
+          <span class="block truncate text-[11px] uppercase tracking-[0.14em] text-muted">Psicólogo Clínico · CRP 06/123456</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-[12px] uppercase tracking-[0.14em] text-muted md:flex">
+        <a href="#sobre" class="underline decoration-transparent decoration-1 underline-offset-4 transition hover:text-brown hover:decoration-caramel">Sobre</a>
+        <a href="#sala" class="underline decoration-transparent decoration-1 underline-offset-4 transition hover:text-brown hover:decoration-caramel">A sala</a>
+        <a href="#atendimento" class="underline decoration-transparent decoration-1 underline-offset-4 transition hover:text-brown hover:decoration-caramel">Atendimento</a>
+        <a href="#faq" class="underline decoration-transparent decoration-1 underline-offset-4 transition hover:text-brown hover:decoration-caramel">Dúvidas</a>
+      </nav>
+
+      <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa."
+         target="_blank" rel="noopener"
+         class="inline-flex min-h-[44px] items-center border border-ink px-4 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-ink hover:text-sand">
+        Agendar
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="border-b border-line">
+      <div class="mx-auto grid max-w-6xl gap-x-12 gap-y-10 px-5 py-14 md:grid-cols-12 md:py-20">
+
+        <div class="md:col-span-7">
+          <div class="rule-grow h-px w-full bg-caramel" aria-hidden="true"></div>
+
+          <h1 class="rise display-xl mt-8 font-serif text-ink">
+            Psicoterapia para adolescentes e adultos em Lins, SP
+          </h1>
+
+          <p class="rise rise-2 mt-6 max-w-[62ch] text-[17px] leading-relaxed text-muted">
+            Um espaço de escuta profissional e sigilosa para entender o que você sente e como se
+            relaciona. Presencial na Clínica Horizonte, região central de Lins.
+            Também atendo online, para quem mora fora da cidade.
+          </p>
+
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa."
+             target="_blank" rel="noopener"
+             class="rise rise-3 mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-3 bg-ink px-7 text-[12px] font-bold uppercase tracking-[0.16em] text-sand transition hover:bg-brown sm:w-auto">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Agendar uma conversa
+          </a>
+
+          <ul class="rise rise-4 mt-9 grid gap-3 border-t border-line pt-6 text-[13px] text-muted sm:grid-cols-2">
+            <li class="flex items-center gap-3">
+              <svg class="h-4 w-4 shrink-0 text-caramel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+              Sigilo profissional garantido pelo Código de Ética
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="h-4 w-4 shrink-0 text-caramel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              Clínica Horizonte, centro de Lins
+            </li>
+          </ul>
+        </div>
+
+        <figure class="md:col-span-5">
+          <img src="assets/retrato.jpg" alt="Rafael Bittencourt, psicólogo clínico"
+               width="800" height="1066" fetchpriority="high"
+               class="aspect-[3/4] w-full border border-line object-cover object-top">
+          <figcaption class="mt-3 text-[11px] uppercase tracking-[0.14em] text-muted">
+            Rafael Bittencourt, psicólogo clínico · CRP 06/123456
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOBRE
+         ============================================================ -->
+    <section id="sobre" class="border-b border-line bg-paper">
+      <div class="mx-auto grid max-w-6xl gap-x-12 gap-y-6 px-5 py-14 md:grid-cols-12 md:py-20">
+        <h2 class="display-lg font-serif text-ink md:col-span-5">
+          Como funciona o meu trabalho
+        </h2>
+
+        <div class="max-w-[68ch] space-y-5 text-[17px] leading-relaxed text-muted md:col-span-7">
+          <p>
+            Meu trabalho é acompanhar você no entendimento do que se passa por dentro: emoções,
+            pensamentos, escolhas e a forma como você se relaciona com as pessoas ao redor. A partir
+            dessa análise, fica mais fácil compreender o próprio comportamento e mudar o que incomoda.
+          </p>
+          <p>
+            Atendo adolescentes e adultos, com escuta profissional e sigilosa. O ritmo das sessões é
+            combinado com você.
+          </p>
+          <p>
+            Sou Rafael Bittencourt, psicólogo clínico, CRP 06/123456. Atendo na Clínica Horizonte, na
+            região central de Lins.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         A SALA (sala, estrutura e localização)
+         ============================================================ -->
+    <section id="sala" class="border-b border-line">
+      <div class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+        <h2 class="max-w-[24ch] display-lg font-serif text-ink">
+          Um lugar pensado para você conversar com calma
+        </h2>
+        <p class="mt-6 max-w-[68ch] text-[17px] leading-relaxed text-muted">
+          O consultório fica na Clínica Horizonte, na região central de Lins, com fácil acesso,
+          boa mobilidade e estacionamento.
+        </p>
+
+        <figure class="mt-10">
+          <img src="assets/sala.jpg" alt="Sala de atendimento da Clínica Horizonte, com poltronas e iluminação aconchegante"
+               width="800" height="600" loading="lazy"
+               class="aspect-[4/3] w-full border border-line object-cover md:aspect-[16/9]">
+          <figcaption class="mt-3 text-[11px] uppercase tracking-[0.14em] text-muted">
+            Sala de atendimento · Clínica Horizonte, Lins
+          </figcaption>
+        </figure>
+
+        <h3 class="mt-14 text-[11px] uppercase tracking-[0.18em] text-brown">Ficha do espaço</h3>
+        <dl class="mt-4 grid sm:grid-cols-2 sm:gap-x-12">
+          <div class="border-t border-line py-4">
+            <dt class="text-[12px] uppercase tracking-[0.14em] text-ink">Sala</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed text-muted">Climatizada, com iluminação agradável, banheiro privativo, Wi-Fi e frigobar.</dd>
+          </div>
+          <div class="border-t border-line py-4">
+            <dt class="text-[12px] uppercase tracking-[0.14em] text-ink">Ambiente</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed text-muted">Jardim de inverno e mobiliário pensado para o diálogo e a escuta.</dd>
+          </div>
+          <div class="border-t border-line py-4">
+            <dt class="text-[12px] uppercase tracking-[0.14em] text-ink">Recepção</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed text-muted">Organizada para o atendimento inicial e a orientação de quem chega.</dd>
+          </div>
+          <div class="border-t border-line py-4">
+            <dt class="text-[12px] uppercase tracking-[0.14em] text-ink">Acessibilidade</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed text-muted">Banheiros adaptados para pessoas com deficiência, em um ambiente acessível.</dd>
+          </div>
+          <div class="border-t border-line py-4 sm:col-span-2">
+            <dt class="text-[12px] uppercase tracking-[0.14em] text-ink">Localização</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed text-muted">R. das Acácias, 320 — região central de Lins, com fácil acesso, mobilidade e estacionamento.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ATENDIMENTO (serviços)
+         Cada linha é um link. Para editar, mude o título, o texto e o text= do link.
+         ============================================================ -->
+    <section id="atendimento" class="border-b border-line bg-paper">
+      <div class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+        <h2 class="display-lg font-serif text-ink">Para quem eu atendo</h2>
+        <p class="mt-6 max-w-[68ch] text-[17px] leading-relaxed text-muted">
+          Toque em uma opção para falar comigo e saber mais.
+        </p>
+
+        <div class="mt-10 border-t border-line">
+
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20para%20mim."
+             target="_blank" rel="noopener"
+             class="group grid gap-x-8 gap-y-2 border-b border-line py-6 transition hover:bg-sand md:grid-cols-12 md:items-baseline">
+            <h3 class="display-md font-serif text-ink md:col-span-4">Psicoterapia individual para adultos</h3>
+            <p class="text-[15px] leading-relaxed text-muted md:col-span-6">
+              Para quem está lidando com ansiedade, relações, decisões ou momentos de mudança.
+              Sessões regulares, geralmente uma vez por semana.
+            </p>
+            <span class="text-[12px] uppercase tracking-[0.14em] text-brown underline decoration-line underline-offset-4 transition group-hover:decoration-caramel md:col-span-2 md:text-right">
+              Quero agendar para mim
+            </span>
+          </a>
+
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20sou%20respons%C3%A1vel%2C%20quero%20agendar%20um%20atendimento."
+             target="_blank" rel="noopener"
+             class="group grid gap-x-8 gap-y-2 border-b border-line py-6 transition hover:bg-sand md:grid-cols-12 md:items-baseline">
+            <h3 class="display-md font-serif text-ink md:col-span-4">Psicoterapia para adolescentes</h3>
+            <p class="text-[15px] leading-relaxed text-muted md:col-span-6">
+              Um espaço só do adolescente, com sigilo garantido dentro dos limites éticos e
+              alinhamento com os responsáveis.
+            </p>
+            <span class="text-[12px] uppercase tracking-[0.14em] text-brown underline decoration-line underline-offset-4 transition group-hover:decoration-caramel md:col-span-2 md:text-right">
+              Quero agendar para meu filho(a)
+            </span>
+          </a>
+
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20orienta%C3%A7%C3%A3o%20de%20pais."
+             target="_blank" rel="noopener"
+             class="group grid gap-x-8 gap-y-2 border-b border-line py-6 transition hover:bg-sand md:grid-cols-12 md:items-baseline">
+            <h3 class="display-md font-serif text-ink md:col-span-4">Orientação de pais e responsáveis</h3>
+            <p class="text-[15px] leading-relaxed text-muted md:col-span-6">
+              Para entender melhor o comportamento do filho e saber como acompanhar esse momento.
+            </p>
+            <span class="text-[12px] uppercase tracking-[0.14em] text-brown underline decoration-line underline-offset-4 transition group-hover:decoration-caramel md:col-span-2 md:text-right">
+              Quero saber mais
+            </span>
+          </a>
+
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20atendimento%20online."
+             target="_blank" rel="noopener"
+             class="group grid gap-x-8 gap-y-2 border-b border-line py-6 transition hover:bg-sand md:grid-cols-12 md:items-baseline">
+            <h3 class="display-md font-serif text-ink md:col-span-4">Atendimento online</h3>
+            <p class="text-[15px] leading-relaxed text-muted md:col-span-6">
+              O mesmo trabalho, por videochamada, para quem mora fora de Lins.
+            </p>
+            <span class="text-[12px] uppercase tracking-[0.14em] text-brown underline decoration-line underline-offset-4 transition group-hover:decoration-caramel md:col-span-2 md:text-right">
+              Quero saber mais
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DIFERENCIAIS
+         ============================================================ -->
+    <section id="diferenciais" class="border-b border-line">
+      <div class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+        <h2 class="display-lg font-serif text-ink">O que você encontra aqui</h2>
+
+        <div class="mt-10 grid gap-x-12 sm:grid-cols-2">
+          <div class="border-t border-line py-6">
+            <h3 class="display-md font-serif text-ink">Sigilo profissional</h3>
+            <p class="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-muted">
+              Tudo o que você fala fica protegido pelo Código de Ética, desde a primeira mensagem.
+            </p>
+          </div>
+          <div class="border-t border-line py-6">
+            <h3 class="display-md font-serif text-ink">Escuta sem julgamento</h3>
+            <p class="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-muted">
+              Seu tempo, sua história. O plano de trabalho é construído com você, não para você.
+            </p>
+          </div>
+          <div class="border-t border-line py-6">
+            <h3 class="display-md font-serif text-ink">Duas frentes de análise</h3>
+            <p class="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-muted">
+              Os processos internos (emoções, pensamentos, história) e as relações interpessoais
+              (família, trabalho, escola).
+            </p>
+          </div>
+          <div class="border-t border-line py-6">
+            <h3 class="display-md font-serif text-ink">Espaço acessível no centro</h3>
+            <p class="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-muted">
+              Clínica Horizonte, com recepção, banheiros adaptados para PCDs e estacionamento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         COMO FUNCIONA
+         ============================================================ -->
+    <section id="como-funciona" class="border-b border-line bg-paper">
+      <div class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+        <h2 class="display-lg font-serif text-ink">Do primeiro contato à primeira sessão</h2>
+
+        <ol class="mt-10">
+          <li class="grid gap-x-8 gap-y-2 border-t border-line py-6 md:grid-cols-12">
+            <span class="font-serif text-4xl leading-none text-brown md:col-span-1" aria-hidden="true">1</span>
+            <h3 class="display-md font-serif text-ink md:col-span-4">Você chama no WhatsApp</h3>
+            <p class="max-w-[60ch] text-[15px] leading-relaxed text-muted md:col-span-7">
+              Conte, em poucas linhas, o que está buscando. Eu respondo e oriento.
+            </p>
+          </li>
+          <li class="grid gap-x-8 gap-y-2 border-t border-line py-6 md:grid-cols-12">
+            <span class="font-serif text-4xl leading-none text-brown md:col-span-1" aria-hidden="true">2</span>
+            <h3 class="display-md font-serif text-ink md:col-span-4">Combinamos os detalhes</h3>
+            <p class="max-w-[60ch] text-[15px] leading-relaxed text-muted md:col-span-7">
+              Horário, formato e valor, na própria conversa, sem burocracia.
+            </p>
+          </li>
+          <li class="grid gap-x-8 gap-y-2 border-t border-line py-6 md:grid-cols-12">
+            <span class="font-serif text-4xl leading-none text-brown md:col-span-1" aria-hidden="true">3</span>
+            <h3 class="display-md font-serif text-ink md:col-span-4">Primeira sessão</h3>
+            <p class="max-w-[60ch] text-[15px] leading-relaxed text-muted md:col-span-7">
+              Um espaço de escuta para entender a sua demanda e o que você espera.
+            </p>
+          </li>
+          <li class="grid gap-x-8 gap-y-2 border-t border-b border-line py-6 md:grid-cols-12">
+            <span class="font-serif text-4xl leading-none text-brown md:col-span-1" aria-hidden="true">4</span>
+            <h3 class="display-md font-serif text-ink md:col-span-4">Sessões no seu ritmo</h3>
+            <p class="max-w-[60ch] text-[15px] leading-relaxed text-muted md:col-span-7">
+              Encontros com frequência combinada, geralmente uma vez por semana.
+            </p>
+          </li>
+        </ol>
+
+        <p class="mt-8 text-[15px] text-muted">
+          Pronto para começar?
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa."
+             target="_blank" rel="noopener"
+             class="font-bold text-brown underline decoration-caramel underline-offset-4 hover:text-brownDeep">
+            Chama no WhatsApp.
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ (acordeão com Alpine.js)
+         ============================================================ -->
+    <section id="faq" class="border-b border-line">
+      <div class="mx-auto grid max-w-6xl gap-x-12 gap-y-8 px-5 py-14 md:grid-cols-12 md:py-20">
+        <div class="md:col-span-5">
+          <h2 class="display-lg font-serif text-ink">Perguntas que a gente mais recebe</h2>
+          <p class="mt-6 max-w-[46ch] text-[15px] leading-relaxed text-muted">
+            Ficou com dúvida?
+            <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20tenho%20uma%20d%C3%BAvida."
+               target="_blank" rel="noopener"
+               class="font-bold text-brown underline decoration-caramel underline-offset-4 hover:text-brownDeep">
+              Chama no WhatsApp.
+            </a>
+          </p>
+        </div>
+
+        <div x-data="{ open: null }" class="md:col-span-7">
+
+          <div class="border-t border-line">
+            <button id="faq-q1" aria-controls="faq-r1" @click="open = open === 1 ? null : 1" :aria-expanded="open === 1"
+                    class="flex min-h-[60px] w-full items-center justify-between gap-6 py-5 text-left display-md font-serif text-ink">
+              De quanto em quanto tempo são as sessões?
+              <svg class="h-4 w-4 shrink-0 text-caramel transition-transform duration-300" :class="open === 1 && 'rotate-45'"
+                   viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+            </button>
+            <p id="faq-r1" role="region" aria-labelledby="faq-q1" x-show="open === 1" x-cloak class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-muted">
+              Geralmente uma vez por semana, no mesmo horário. O ajuste é combinado com cada pessoa.
+            </p>
+          </div>
+
+          <div class="border-t border-line">
+            <button id="faq-q2" aria-controls="faq-r2" @click="open = open === 2 ? null : 2" :aria-expanded="open === 2"
+                    class="flex min-h-[60px] w-full items-center justify-between gap-6 py-5 text-left display-md font-serif text-ink">
+              Quanto tempo dura cada sessão?
+              <svg class="h-4 w-4 shrink-0 text-caramel transition-transform duration-300" :class="open === 2 && 'rotate-45'"
+                   viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+            </button>
+            <p id="faq-r2" role="region" aria-labelledby="faq-q2" x-show="open === 2" x-cloak class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-muted">
+              Por volta de 50 minutos.
+            </p>
+          </div>
+
+          <div class="border-t border-line">
+            <button id="faq-q3" aria-controls="faq-r3" @click="open = open === 3 ? null : 3" :aria-expanded="open === 3"
+                    class="flex min-h-[60px] w-full items-center justify-between gap-6 py-5 text-left display-md font-serif text-ink">
+              O que é sigilo e ele vale para o adolescente?
+              <svg class="h-4 w-4 shrink-0 text-caramel transition-transform duration-300" :class="open === 3 && 'rotate-45'"
+                   viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+            </button>
+            <p id="faq-r3" role="region" aria-labelledby="faq-q3" x-show="open === 3" x-cloak class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-muted">
+              Sigilo é a proteção de tudo o que você fala em terapia, prevista no Código de Ética. No
+              atendimento de adolescentes, o combinado sobre o que fica entre o adolescente e o
+              psicólogo é alinhado com ele e com os responsáveis no início.
+            </p>
+          </div>
+
+          <div class="border-t border-line">
+            <button id="faq-q4" aria-controls="faq-r4" @click="open = open === 4 ? null : 4" :aria-expanded="open === 4"
+                    class="flex min-h-[60px] w-full items-center justify-between gap-6 py-5 text-left display-md font-serif text-ink">
+              O atendimento online funciona igual ao presencial?
+              <svg class="h-4 w-4 shrink-0 text-caramel transition-transform duration-300" :class="open === 4 && 'rotate-45'"
+                   viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+            </button>
+            <p id="faq-r4" role="region" aria-labelledby="faq-q4" x-show="open === 4" x-cloak class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-muted">
+              Sim. A sessão acontece por vídeo, com a mesma duração e o mesmo sigilo.
+            </p>
+          </div>
+
+          <div class="border-t border-b border-line">
+            <button id="faq-q5" aria-controls="faq-r5" @click="open = open === 5 ? null : 5" :aria-expanded="open === 5"
+                    class="flex min-h-[60px] w-full items-center justify-between gap-6 py-5 text-left display-md font-serif text-ink">
+              Quanto custa?
+              <svg class="h-4 w-4 shrink-0 text-caramel transition-transform duration-300" :class="open === 5 && 'rotate-45'"
+                   viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+            </button>
+            <p id="faq-r5" role="region" aria-labelledby="faq-q5" x-show="open === 5" x-cloak class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-muted">
+              O valor é combinado no primeiro contato, conforme o tipo de atendimento. Chame no
+              WhatsApp.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA FINAL
+         ============================================================ -->
+    <section id="contato" class="bg-ink">
+      <div class="mx-auto grid max-w-6xl gap-x-12 gap-y-10 px-5 py-16 md:grid-cols-12 md:py-24">
+        <div class="md:col-span-7">
+          <h2 class="display-xl font-serif text-sand">Agende sua primeira conversa</h2>
+          <p class="mt-6 max-w-[56ch] text-[17px] leading-relaxed text-line">
+            Atendimento presencial na Clínica Horizonte, região central de Lins,
+            e online.
+          </p>
+        </div>
+
+        <div class="md:col-span-5 md:pt-4">
+          <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa."
+             target="_blank" rel="noopener"
+             class="inline-flex min-h-[52px] w-full items-center justify-center gap-3 bg-sand px-7 text-[12px] font-bold uppercase tracking-[0.16em] text-ink transition hover:bg-caramel">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Agendar no WhatsApp
+          </a>
+
+          <div class="mt-6 flex flex-col gap-2 text-[13px] text-[#A99E93]">
+            <span>Clínica Horizonte · Região central de Lins, SP</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=R.%20das%20Ac%C3%A1cias%2C%20320%2C%20Lins%20-%20SP"
+               target="_blank" rel="noopener"
+               class="inline-flex min-h-[44px] w-fit items-center gap-2 font-bold text-sand underline decoration-caramel underline-offset-4 hover:text-caramel">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              Como chegar
+            </a>
+          </div>
+        </div>
+
+        <p class="border-t border-white/15 pt-5 text-[12px] leading-relaxed text-[#A99E93] md:col-span-12 md:max-w-[80ch]">
+          Em caso de crise, ligue 188 (CVV, 24 horas, ligação gratuita) ou procure a UPA ou o
+          hospital mais próximo.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       RODAPÉ
+       ============================================================ -->
+  <footer class="bg-sand">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 text-[11px] uppercase tracking-[0.14em] text-muted sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.svg" alt="" width="36" height="36" loading="lazy"
+             class="h-9 w-9 rounded-full border border-line bg-paper object-cover">
+        <p>Rafael Bittencourt · Psicólogo Clínico · CRP 06/123456</p>
+      </div>
+      <p>© 2026 · Clínica Horizonte, Lins, SP</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BOTÃO FLUTUANTE DE WHATSAPP
+       ============================================================ -->
+  <a href="https://wa.me/5514999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa."
+     target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
+     class="fixed right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-wa text-white shadow-lg transition hover:scale-105 active:scale-95"
+     style="bottom: calc(1rem + env(safe-area-inset-bottom));">
+    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+</body>
+</html>

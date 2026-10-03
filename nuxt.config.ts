@@ -18,6 +18,8 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/'],
+      // Os demos são HTML estático em public/projects; o crawler não deve tratá-los como rotas do Nuxt.
+      ignore: ['/projects/demo-psicologo', '/projects/demo-psicologo/**', '/projects/demo-estetica', '/projects/demo-estetica/**'],
     },
     cloudflare: {
       deployConfig: true,

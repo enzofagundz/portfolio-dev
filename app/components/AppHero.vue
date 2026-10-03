@@ -22,7 +22,7 @@ const [lead, second] = projects
         </div>
       </div>
 
-      <div v-if="lead" class="enter enter-2 mt-16 grid gap-5 md:mt-20 lg:grid-cols-12 lg:gap-6">
+      <div v-if="lead?.cover" class="enter enter-2 mt-16 grid gap-5 md:mt-20 lg:grid-cols-12 lg:gap-6">
         <figure class="rounded-card border border-line bg-cloud p-1.5 shadow-frame lg:col-span-8">
           <img
             :src="lead.cover.src"
@@ -40,7 +40,7 @@ const [lead, second] = projects
         </figure>
 
         <figure
-          v-if="second"
+          v-if="second?.mobile"
           class="relative hidden overflow-hidden rounded-card border border-line bg-cloud shadow-card lg:col-span-4 lg:block"
         >
           <img
