@@ -33,7 +33,7 @@ export const site = {
   whatsappMessage: 'Olá, Enzo! Vi seu portfólio e gostaria de conversar sobre uma landing page.',
   location: 'Lins, SP',
   linkedin: 'https://www.linkedin.com/in/enzofagundz',
-  url: '',
+  url: 'https://enzofagundz.com.br',
 }
 
 export const nav: NavItem[] = [

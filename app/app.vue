@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { site } from '~/data/site'
 
+const route = useRoute()
+
+if (route.path !== '/') {
+  throw createError({ statusCode: 404 })
+}
+
 const title = 'Enzo Fagundes — Landing Pages para Profissionais'
 const description =
   'Desenvolvimento de landing pages profissionais para psicólogos, profissionais de estética, nutricionistas e negócios locais.'
@@ -17,6 +23,7 @@ useSeoMeta({
   ogDescription: description,
   ogImage: () => absolute('/og.png'),
   ogImageAlt: 'Enzo Fagundes, desenvolvedor de landing pages para profissionais e negócios locais.',
+  ogUrl: () => absolute('/'),
   twitterCard: 'summary_large_image',
   twitterTitle: title,
   twitterDescription: description,
