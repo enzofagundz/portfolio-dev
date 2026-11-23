@@ -12,7 +12,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^4.5.2",
+    "nuxt": "^4.6.4",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
@@ -21,6 +21,11 @@
     "@tailwindcss/vite": "^4.3.3",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.7.3",
-    "wrangler": "^4.145.0"
+    "wrangler": "^4.166.0"
+  },
+  "overrides": {
+    "archiver": {
+      "readdir-glob": "^4.0.0"
+    }
   }
 }
